@@ -1,0 +1,8 @@
+{
+  "/cpm-api": {
+    "target": "https://seqrite.fyers.ad",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

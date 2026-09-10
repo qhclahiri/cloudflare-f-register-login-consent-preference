@@ -1,0 +1,52 @@
+<div class="dashboard-wrapper">
+  <header class="header">
+    <div class="header-content">
+      <h1 class="logo">WELCOME</h1>
+      <div class="header-actions">
+        <!-- <button class="admin-btn" routerLink="/consent-admin">Consent Admin</button> -->
+        <button class="logout-btn" (click)="onLogout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-content" *ngIf="!isLoading && currentUser">
+    <div class="welcome-section">
+      <h2>Welcome, {{ currentUser.name }}!</h2>
+      <div class="user-info">
+        <div class="info-card">
+          <label>Name:</label>
+          <p>{{ currentUser.name }}</p>
+        </div>
+        <div class="info-card">
+          <label>Email:</label>
+          <p>{{ currentUser.email }}</p>
+        </div>
+        <!-- <div class="info-card">
+          <label>User ID:</label>
+          <p>{{ currentUser.userId }}</p>
+        </div> -->
+      </div>
+
+      <div class="navigation-section">
+        <h3>Quick Links</h3>
+        <div class="nav-buttons">
+          <!-- <button class="nav-btn" routerLink="/about">
+            <span class="icon">ℹ️</span>
+            <span class="label">About</span>
+            <span class="description">View session information</span>
+          </button> -->
+          <button class="nav-btn" routerLink="/preference-center">
+            <span class="icon">⚙️</span>
+            <span class="label">Preference Center</span>
+            <span class="description">Manage your preferences</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-section" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist/dsci-demo-qh"
+
+# Proxy CPM API calls through Netlify's edge (server-to-server) so the browser
+# only ever talks to the same origin, avoiding the vendor's missing CORS headers.
+[[redirects]]
+  from = "/cpm-api/*"
+  to = "https://seqrite.fyers.ad/cpm-api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
