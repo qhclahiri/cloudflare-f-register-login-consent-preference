@@ -1,0 +1,84 @@
+<div class="form-container">
+  <div class="form-card">
+    <button class="back-button" routerLink="/">← Back</button>
+    <h2>Register</h2>
+    <p class="form-subtitle">Create your account</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name
+        <span class="error">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Enter your name"
+          [class.error]="name?.invalid && name?.touched"
+        />
+        <div class="error-message" *ngIf="name?.invalid && name?.touched">
+          <span *ngIf="name?.errors?.['required']">Name is required</span>
+          <span *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email
+        <span class="error">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.error]="email?.invalid && email?.touched"
+        />
+        <div class="error-message" *ngIf="email?.invalid && email?.touched">
+          <span *ngIf="email?.errors?.['required']">Email is required</span>
+          <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <!-- Consent Widget Container -->
+      <div class="widget-container">
+        <div class="header-language-wrapper-container">
+          <div id="language-wrapper" style="display: none;">
+            <div class="dropdown">
+              <label for="langSelect">Language Preference <br></label>
+              <select id="langSelect"></select>
+            </div>
+          </div>
+        </div>
+        <div class="header-container">
+          <div class="logo-area" id="logo-area"></div>
+        </div>
+        <div class="preview-statements">
+          <div id="consent-root">Loading consent form...</div>
+          <div id="error-message" class="consent-error-message"></div>
+          <div id="toast"></div>
+        </div>
+        <div class="full-width-footer-border"></div>
+        <div class="button-group" id="button-group">
+          <button class="cancel" id="cancelBtn" style="display: none;">Cancel</button>
+          <button class="submit" id="submitBtn" style="display: none;">Submit</button>
+        </div>
+      </div>
+
+      <div class="error-message server-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div class="success-message" *ngIf="registrationSuccess">
+        Registration successful! Redirecting to login...
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid || isLoading">
+        {{ isLoading ? 'Registering...' : 'Register' }}
+      </button>
+    </form>
+
+    <p class="link-text">
+      Already have an account? <a routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</div>

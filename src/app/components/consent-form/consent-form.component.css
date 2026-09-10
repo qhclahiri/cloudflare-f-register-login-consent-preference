@@ -1,0 +1,133 @@
+.consent-form-container {
+  background: #f9f9ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.consent-header h3 {
+  font-size: 1.2rem;
+  color: #667eea;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.consent-loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.consent-loading .spinner {
+  border: 3px solid rgba(102, 126, 234, 0.3);
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.consent-error {
+  background: #ffe5e5;
+  padding: 15px;
+  border-radius: 6px;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.consent-permissions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.permission-block {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #e2e2fb;
+}
+
+.permission-text {
+  font-size: 0.95rem;
+  color: #606190;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.permission-text p {
+  margin: 0;
+}
+
+.permission-options {
+  margin-top: 8px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  color: #43436C;
+  cursor: pointer;
+}
+
+.option-label input[type="checkbox"],
+.option-label input[type="radio"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.option-label span {
+  user-select: none;
+}
+
+.dropdown-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e2fb;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.9rem;
+  color: #43436C;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.dropdown-select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.consent-note {
+  font-size: 0.85rem;
+  color: #e74c3c;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .consent-form-container {
+    padding: 15px;
+  }
+
+  .permission-block {
+    padding: 12px;
+  }
+
+  .permission-text {
+    font-size: 0.9rem;
+  }
+
+  .option-label {
+    font-size: 0.85rem;
+  }
+}

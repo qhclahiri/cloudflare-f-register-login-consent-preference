@@ -1,0 +1,94 @@
+<div class="admin-wrapper">
+  <header class="admin-header">
+    <div class="header-content">
+      <h1 class="logo">Consent Form Admin</h1>
+      <button class="back-btn" routerLink="/dashboard">Back to Dashboard</button>
+    </div>
+  </header>
+
+  <div class="admin-content">
+    <div class="admin-card">
+      <h2>Consent Form Configuration</h2>
+      <p class="subtitle">Manage the consent form displayed during registration and login</p>
+
+      <div class="config-section">
+        <h3>Current Configuration</h3>
+        <div class="info-box">
+          <label>Active Form ID:</label>
+          <code>{{ currentFormId }}</code>
+        </div>
+
+        <div class="form-group">
+          <label for="formId">Update Form ID:</label>
+          <input
+            type="text"
+            id="formId"
+            [(ngModel)]="newFormId"
+            placeholder="Enter new consent form ID"
+            class="form-input"
+          />
+        </div>
+
+        <button class="btn btn-primary" (click)="updateFormId()">
+          Update Form ID
+        </button>
+
+        <div class="success-message" *ngIf="successMessage">
+          {{ successMessage }}
+        </div>
+
+        <div class="error-message" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <div class="preview-section">
+        <div class="section-header">
+          <h3>Form Preview</h3>
+          <button class="btn btn-secondary" (click)="refreshPreview()">
+            Refresh Preview
+          </button>
+        </div>
+
+        <div class="preview-loading" *ngIf="isLoading">
+          <div class="spinner"></div>
+          <p>Loading preview...</p>
+        </div>
+
+        <div class="preview-content" *ngIf="!isLoading && previewData">
+          <div class="preview-info">
+            <h4>{{ previewData.name }}</h4>
+            <p>{{ previewData.description }}</p>
+            <p><strong>Company:</strong> {{ previewData.branding?.companyName }}</p>
+            <p><strong>Status:</strong> <span class="status-badge">{{ previewData.status }}</span></p>
+          </div>
+
+          <div class="permissions-preview">
+            <h4>Permissions ({{ previewData.permissions?.length || 0 }})</h4>
+            <div class="permission-item" *ngFor="let permission of previewData.permissions">
+              <div class="permission-header">
+                <span class="permission-type">{{ permission.elementType }}</span>
+                <span class="permission-mandatory" *ngIf="permission.mandatory">Required</span>
+              </div>
+              <div class="permission-text" [innerHTML]="permission.text"></div>
+              <div class="permission-options">
+                <span class="option-badge" *ngFor="let option of permission.options">{{ option }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions">
+        <h3>Instructions</h3>
+        <ol>
+          <li>The consent form is loaded dynamically from the API using the Form ID</li>
+          <li>To change the form, update the Form ID above with a valid consent form ID</li>
+          <li>After updating, you need to modify <code>ConsentService</code> and restart the application</li>
+          <li>The form will be displayed during user registration and login</li>
+          <li>Users must select at least one option before they can proceed</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
