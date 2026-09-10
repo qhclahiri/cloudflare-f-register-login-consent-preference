@@ -1,0 +1,8 @@
+{
+  "name": "cloudflare-f-register-login-consent-preference",
+  "compatibility_date": "2024-09-10",
+  "assets": {
+    "directory": "./dist/dsci-demo-qh",
+    "not_found_handling": "single-page-application"
+  }
+}
